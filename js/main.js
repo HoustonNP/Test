@@ -1,30 +1,31 @@
 const nav = document.querySelector('nav');
-const navHight = nav.offsetHeight;
-const scrollTop = window.pageYOffset;
+const navHeight = nav.offsetHeight;
 let scrollPosition = () => window.pageYOffset;
-let lastScrollDown = 0
-let lastScrollUp = 0
+let lastScrollDown = 0;
+let lastScrollUp = 0;
 let lastScroll = 0;
 
 window.addEventListener('scroll', () => {
 
-	if (lastScroll < scrollPosition()) {
-		lastScrollDown = scrollPosition();
-		nav.style.cssText = `top: ${lastScrollUp}px`;
-	} else if (lastScroll > scrollPosition() &&
-		lastScrollDown - navHight < scrollPosition() &&
-		lastScrollDown > navHight) {
-		lastScrollUp = scrollPosition();
-		nav.style.cssText = `top: ${lastScrollDown - navHight}px`;
-	} else if (lastScroll > scrollPosition() &&
-		lastScrollDown > navHight) {
-		lastScrollUp = scrollPosition();
-		nav.style.cssText = `position: fixed;`;
+	if (lastScroll < scrollPosition() &&
+		lastScrollUp + navHeight < lastScrollDown) {
+		nav.style.cssText = `top: ${lastScrollUp}px;`
+	}
+	if (lastScroll > scrollPosition() &&
+		lastScrollDown - navHeight > lastScrollUp) {
+		nav.style.cssText = `top: ${lastScrollDown - navHeight}px;`
+	}
+	if (lastScroll > scrollPosition() &&
+		lastScrollDown !== lastScroll &&
+		lastScrollDown - navHeight >= scrollPosition()) {
+		nav.style.cssText = `position: fixed;`
 	}
 
-	lastScroll = scrollPosition();
+	if (lastScroll < scrollPosition()) {
+		lastScrollDown = scrollPosition()
+	} else {
+		lastScrollUp = scrollPosition()
+	}
 
-	console.log('lastScroll: ' + lastScroll);
-	console.log('lastScrollUp: ' + lastScrollUp);
-	console.log('lastScrollDown: ' + lastScrollDown);
+	lastScroll = scrollPosition()
 })
