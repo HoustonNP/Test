@@ -8,12 +8,6 @@ let lastScroll = 0;
 
 window.addEventListener('scroll', () => {
 
-	if (lastScroll < scrollPosition()) {
-		lastScrollDown = scrollPosition()
-	} else {
-		lastScrollUp = scrollPosition()
-	}
-
 	if (lastScroll < scrollPosition() &&
 		navTop() == 0) {
 		nav.style.cssText = `top: ${lastScrollUp}px;`
@@ -27,6 +21,12 @@ window.addEventListener('scroll', () => {
 	if (lastScroll >= scrollPosition() &&
 		navTop() >= 0) {
 		nav.style.cssText = `position: fixed;`
+	}
+
+	if (lastScroll < scrollPosition()) {
+		lastScrollDown = scrollPosition()
+	} else {
+		lastScrollUp = scrollPosition()
 	}
 
 	lastScroll = scrollPosition();
