@@ -14,11 +14,11 @@ window.addEventListener('scroll', () => {
 	}
 
 	if (lastScroll > scrollPosition() &&
-		navTop() + navHeight <= 0) {
+		navTop() + navHeight < 0) {
 		nav.style.cssText = `top: ${lastScrollDown - navHeight}px;`
 	}
 
-	if (lastScroll >= scrollPosition() &&
+	if (lastScroll > scrollPosition() &&
 		navTop() >= 0) {
 		nav.style.cssText = `position: fixed;`
 	}
