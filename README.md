@@ -1,6 +1,8 @@
 # https://houstonnp.github.io/Test/
-### Тестовый проект. Реализован "плавающий" header. Баг вчисления высоты методом offsetHeight.
 ### Технологии:
 - HTML
 - CSS
 - JavaScript
+### Тестовый проект. 
+Реализован "плавающий" header. Баг вчисления высоты методом offsetHeight в отличие от метода getBoundingClientRect().height.
+прыгающий пиксель над шапкой не исправлен.
