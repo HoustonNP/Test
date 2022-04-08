@@ -23,8 +23,7 @@ window.addEventListener('scroll', () => {
 
 	if (lastScroll < scrollPosition()) {
 		lastScrollDown = scrollPosition()
-	}
-	if (lastScroll > scrollPosition()) {
+	} else if (lastScroll > scrollPosition()) {
 		lastScrollUp = scrollPosition()
 	}
 
