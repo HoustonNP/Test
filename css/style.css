@@ -124,6 +124,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
+  height: auto;
   border-radius: 0 0 2rem 2rem;
   z-index: 100;
   padding: 3rem 0 1rem;
